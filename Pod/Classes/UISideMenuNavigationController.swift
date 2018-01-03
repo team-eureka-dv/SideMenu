@@ -28,6 +28,9 @@ open class UISideMenuNavigationController: UINavigationController {
         }
     }
     fileprivate func findDelegate(forViewController: UIViewController?) -> UISideMenuNavigationControllerDelegate? {
+        if let forViewController = forViewController as? UISideMenuNavigationControllerDelegate {
+            return forViewController
+        }
         if let navigationController = forViewController as? UINavigationController {
             return findDelegate(forViewController: navigationController.topViewController)
         }
